@@ -8,30 +8,13 @@ function escaleraNumeros ($random) {
         for ($num3=1;$num3<=$num2;$num3++) {
             if ($num2%2==0) {
                 echo '<span style="color:red">'.$num2.'</span>';
-            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            else {
+            } else {
                 echo '<span style="color:blue">' . $num2 . '</span>';
             }
-            echo "<br>";
         }
+        echo "<br>";
+
     }
 }
 
