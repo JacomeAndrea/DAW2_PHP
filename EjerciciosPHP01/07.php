@@ -1,11 +1,21 @@
+<style>
+    img {
+        width: 1px;
+        height: 20px;
+    }
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+    }
+    .blue, .green, .red {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+</style>
 
 <?php
-/*Elegir tres valores entre 100 y 500 y pintar tres barras de color rojo, verde y azul del tamaño indicado.
-
-Pista: Utilizar 3 tablas con una fila del tamaño generado.
- * */
-
-
 
 $min = 100;
 $max = 500;
@@ -17,26 +27,19 @@ $random3 = rand($min, $max);
 echo "Número 1: " . $random1."<br>";
 echo "Número 2: " . $random2."<br>";
 echo "Número 3: " . $random3."<br>";
-
-echo "<table>";
-echo "<tr>";
-echo "</th>";
-
-
-    echo "<tr>";
-    for ($width1=0; $width1 <=$random1 ; $width1++) {
-        echo "<td class='uno'>".$random1."</td>";
+echo "<br>";
+echo "<div class='contenedor'>";
+    for ($i=0; $i <=$random1 ; $i++) {
+        echo "<div class='red'>"."<img src='red.png' alt='red'"."</div>";
     }
+    echo $random1."<br>";
 
-    for ($width2=0; $width2 <=$random2 ; $width2++) {
-    echo "<td class='dos'>".$random2."</td>";
+    for ($i=0; $i <=$random2 ; $i++) {
+        echo "<div class='green'>"."<img src='green.png' alt='green'"."</div>";
     }
-
-    for ($width3=0; $width3 <=$random3 ; $width3++) {
-    echo "<td class='tres'>".$random3."</td>";
+    echo $random2."<br>";
+    for ($i=0; $i <=$random3 ; $i++) {
+        echo "<div class='blue'>"."<img src='blue.png' alt='blue'"."</div>";
     }
-
-echo '</tr>';
-echo "</table>";
-
-?>
+    echo $random3."<br>";
+echo "</div>";

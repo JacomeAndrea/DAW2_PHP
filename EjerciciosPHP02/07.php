@@ -1,3 +1,4 @@
+
 <style>
     .titulo {
         margin: 50px;
@@ -22,25 +23,27 @@
 $min=1;
 $max=5;
 
+
 echo "<h1 class='titulo'> Tablero de colores </h1>";
 echo "<table>";
     echo "<tr>";
         for ($i=0; $i<10;$i++) { //th
             $randomheader = rand($min, $max);
             if ($randomheader==1) {
-                $color = '<span style="color:red"/>';
+                $color = 'red';
 
             } else if ($randomheader==2) {
-                $color = '<span style="color:green"/>';
+                $color = 'green';
             } else if ($randomheader==3) {
-                $color = '<span style="color:blue"/>';
+                $color = 'blue';
             } else if ($randomheader==4) {
-                $color = '<span style="color:white"/>';
+                $color = 'white';
             } else {
-                $color = '<span style="color:black"/>';
+                $color = 'black';
             }
+            echo "<th style='background-color: . $color.'/>;
+            
 
-            echo "<th>" . $color."</th>";
         }
 
     echo "</tr>";
@@ -49,25 +52,22 @@ echo "<table>";
         for ($i=0; $i<40;$i++) { //tr
             $randombody = rand($min, $max);
             if ($randombody==1) {
-                $color = '<span style="color:red"/>';
+                $color = 'red';
 
             } else if ($randombody==2) {
-                $color = '<span style="color:green"/>';
+                $color = 'green';
             } else if ($randombody==3) {
-                $color = '<span style="color:blue"/>';
+                $color = 'blue';
             } else if ($randombody==4) {
-                $color = '<span style="color:white"/>';
+                $color = 'white';
             } else {
-                $color = '<span style="color:black"/>';
+                $color = 'black';
             }
-            echo "<td>" . $color."</td>";
+            ?>
+        echo "<td style='background-color: .$color.'/>";
+
         }
     echo "</tr>";
 echo "</table>";
-
-
-
-
-
-
-
+                
+?>

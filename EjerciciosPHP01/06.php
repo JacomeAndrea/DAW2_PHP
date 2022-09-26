@@ -5,14 +5,11 @@ h1 {
     text-align: center;
     margin: 30px;
     padding: 80px;
-    text-shadow: black;
-    font-family:verdana;
     font-size:50px;
-    color:white;
-    text-shadow: 1px  0px 0px black,
-    0px  1px 0px black,
-    -1px  0px 0px black,
-    0px -1px 0px black;
+    text-shadow: 1px  0 0 black,
+    0  1px 0 black,
+    -1px  0 0 black,
+    0 -1px 0 black;
 }
 table {
     border-collapse: collapse;
