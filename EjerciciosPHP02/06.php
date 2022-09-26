@@ -9,7 +9,7 @@ for ($i=1; $i<=$num;$i++) {
 }
 echo "<br>";
 for ($i=1; $i<=$num;$i++) {
-    echo "**** ";
+    echo "****&nbsp";
 }
 echo "<br>";
 if ($num==1) {
