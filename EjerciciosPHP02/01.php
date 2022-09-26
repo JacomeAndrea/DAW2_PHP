@@ -1,6 +1,6 @@
 <?php
 
-function elMayor ($a,$b,$c) {
+function elMayor ($a,$b,&$c) {
     if ($a>$b) {
         $c=$a;
     } else if ($b>$a){
