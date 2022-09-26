@@ -1,3 +1,13 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Ejercicio 1</h1>
+<hr>
+</body>
+</html>
+
 <?php
 
 /*
@@ -27,9 +37,7 @@ function operacionesBasicas ($random1, $random2) {
 }
 
 operacionesBasicas($random1, $random2);
-
-
-
+show_source(__FILE__);
 
 
 ?>
