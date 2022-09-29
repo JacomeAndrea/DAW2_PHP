@@ -15,19 +15,18 @@ function generarCindoDados ($arrayDados): array
     return array($resu);
 }
 
-function sumaDeJugador1 ($jugador1) { //Suma (menos el max y el min)
-    $sum = array_sum($jugador1);
-    return $sum-((max(array ($jugador1))))-((min(array ($jugador1)))); //restamos al total el max y min
+function sumaDeJugador ($jugador) { //Suma (menos el max y el min)
+    $sum = array_sum($jugador);
+    $min=min($jugador);
+    $max=max($jugador);
+    $sum-=($max+$min);
+    return $sum; //restamos al total el max y min
 }
 
-function sumaDeJugador2 ($jugador2) { //Suma (menos el max y el min)
-    $sum = array_sum($jugador2);
-    return $sum-((max(array ($jugador2))))-((min(array ($jugador2)))); //restamos al total el max y min
-}
 
 function resultadoGanador ($jugador1, $jugador2): string
 {
-    if (sumaDeJugador1($jugador1)==sumaDeJugador2($jugador2)) {
+    if ($sumaJugador1===$sumaJugador2) {
         return "¡Empate!";
     } else if (sumaDeJugador1($jugador1)>sumaDeJugador2($jugador2)) {
         return "¡Gana el jugador1 con ".sumaDeJugador1($jugador1)." puntos!";
