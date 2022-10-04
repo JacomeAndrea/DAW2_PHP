@@ -1,16 +1,20 @@
 <?php
-$arrayBonoloto = array();
 
-function rellenoArrayConValores ($arrayBonoloto) { //del 1 al 49
-    $array = [];
-    for ($i = 1; $i <= 49; $i ++) {
-        $array[] = $i;
+function rellenoArrayConValores () {
+    $arrayBonoloto = [];
+    for ($i = 0; $i <= 6; $i ++) {
+        $random =rand(1,49);
+        $arrayBonoloto[$i]=$random;
     }
-    return$array;
+    return $arrayBonoloto;
 }
-print_r(rellenoArrayConValores($arrayBonoloto));
 
+function quitarValoresRepetidos ($arrayBonoloto): array
+{
+    return array_unique($arrayBonoloto);
+}
 
-$indices = array_rand($arrayBonoloto, 6);
-print_r($indices);
+$tabla=quitarValoresRepetidos(rellenoArrayConValores());
+asort($tabla);
+print_r($tabla);
 
