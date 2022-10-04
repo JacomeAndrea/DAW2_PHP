@@ -1,19 +1,19 @@
 <?php
 
-$arrayDados = array(1 =>'#9856', 2=>'#985', 3=>'#9858', 4=>'#9859', 5=>'#9860', 6=>'9861');
-
 function elegirDadosRandom(): int
 { //elige un dado random
     return rand(1,6);
 }
 
-function generarCindoDados ($arrayDados): array
+function generarCindoDados (): array
 { //selecciona 5 dados
+    $arrayDados = array();
     for ($i=0; $i<5; $i++) {
-        $resu [$i]=$arrayDados[elegirDadosRandom()];
+        $arrayDados [$i]=elegirDadosRandom();
     }
-    return array($resu);
+    return $arrayDados;
 }
+
 
 function sumaDeJugador ($jugador) { //Suma (menos el max y el min)
     $sum = array_sum($jugador);
@@ -23,15 +23,27 @@ function sumaDeJugador ($jugador) { //Suma (menos el max y el min)
 }
 
 
-function resultadoGanador ($jugador1, $jugador2): string
+function resultadoGanador ($sumaJugador1, $sumaJugador2): string
 {
     if ($sumaJugador1===$sumaJugador2) {
         return "¡Empate!";
-    } else if (sumaDeJugador1($jugador1)>sumaDeJugador2($jugador2)) {
-        return "¡Gana el jugador1 con ".sumaDeJugador1($jugador1)." puntos!";
-    } else if (sumaDeJugador1($jugador1)<sumaDeJugador2($jugador2)) {
-        return "¡Gana el jugador2 con " . sumaDeJugador2($jugador2) . " puntos!";
+    } else if ($sumaJugador1>$sumaJugador2) {
+        return "¡Gana el jugador 1 con ".$sumaJugador1." puntos!";
+    } else if ($sumaJugador1<$sumaJugador2) {
+        return "¡Gana el jugador 2 con " . $sumaJugador2 . " puntos!";
     }
     return "Lo sentimos, ha habido un error... Inténtelo de nuevo";
 }
+function generarIconos($tiradas): array
+{
+    $arrayIconos = array(1 =>'&#9856', 2=>'&#9857', 3=>'&#9858', 4=>'&#9859', 5=>'&#9860', 6=>'&#9861');
+    $iconos = array();
+    $size=sizeof($tiradas);
+    for ($i=0; $i<$size;$i++){
+        $iconos[$i]=$arrayIconos[$tiradas[$i]];
+    }
+    return $iconos;
+}
+
+
 
