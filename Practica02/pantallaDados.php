@@ -29,6 +29,9 @@
             text-align: center;
             font-size: xx-large;
         }
+        span {
+            width: 3rem;
+        }
 
     </style>
 </head>
@@ -39,34 +42,51 @@
 
     <?php
     include 'dados.php';
-    $arrayDados = array(1 =>'#9856', 2=>'#985', 3=>'#9858', 4=>'#9859', 5=>'#9860', 6=>'9861');
-    //Jugador 1
-    $dadosJugador1 = generarCindoDados($arrayDados);
-    $sumaJugador1 = sumaDeJugador1(generarCindoDados($arrayDados));
-    //Jugador 2
-    $dadosJugador2 = generarCindoDados($arrayDados);
-    $sumaJugador2 = sumaDeJugador2(generarCindoDados($arrayDados));
 
-    $ganador = resultadoGanador($sumaJugador1,$sumaJugador2);
+    $jugador1 = generarCindoDados();
+    $jugador2 = generarCindoDados();
 
-    echo '<div class="jugador1">'."<h4>'Jugador 1'</h4>";
-    foreach ($dadosJugador1 as $resu) { //impresión dados jugador 1
-        echo '<span>'.$resu.'</span>';
-    }
-    echo "<h4>'Suma del Jugador 1: ".'</div>';
+    $sumaJugador1 = sumaDeJugador($jugador1);
+    $sumaJugador2 = sumaDeJugador($jugador2);
 
-    echo '<div class="jugador2">'."<h4>'Jugador 2'</h4>";
-    foreach ($dadosJugador2 as $resu) { //impresión dados jugador 2
-        echo '<span>'.$resu.'</span>';
-    }
-    echo 'Suma jugador 2: '.$sumaJugador2;
-    echo "<h4>'Suma del Jugador 2: ".'</div>';
+    $icon1=generarIconos($jugador1);
+    $icon2=generarIconos($jugador2);
 
-    echo '
-        <div class="footer">
-        '.$ganador.'
-        </div>';
+    echo '<td>'."Jugador 1 ".'</td>';
+
+        foreach ($icon1 as $icon) {
+            ?>
+
+                <td><span><?php echo $icon; ?></span></td>
+    <?php
+
+        }
+    echo '<td>'.$sumaJugador1." puntos".'</td>';
     ?>
+    </tr>
+
+    <tr>
+    <?php
+    echo '<td>'."Jugador 2 ".'</td>';
+
+    foreach ($icon2 as $icon) {
+            ?>
+
+                <td><span><?php echo $icon; ?></span></td>
+
+    <?php
+        }
+    echo '<td>'.$sumaJugador2." puntos".'</td>';
+
+    echo '<br>';
+    ?>
+    </tr>
+
+</table>
+<br>
+<br>
+<div class="footer"><?php echo resultadoGanador($sumaJugador1,$sumaJugador2); ?></div>
+
 </body>
 </html>
 
