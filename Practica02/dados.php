@@ -19,8 +19,7 @@ function sumaDeJugador ($jugador) { //Suma (menos el max y el min)
     $sum = array_sum($jugador);
     $min=min($jugador);
     $max=max($jugador);
-    $sum-=($max+$min);
-    return $sum; //restamos al total el max y min
+    return $sum-($max+$min); //restamos al total el max y min
 }
 
 
