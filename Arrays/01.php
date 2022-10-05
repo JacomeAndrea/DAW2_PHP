@@ -17,8 +17,7 @@ function valorRepetido ($array) {
     // tabla: valores como clave y frecuencias como valor
     $valoresFrecuencia= array_count_values($array);
     // Devuelve la clave/posicion de valor con mayor frecuencia
-    $moda = array_search(max($valoresFrecuencia), $valoresFrecuencia);
-    return $moda;
+    return array_search(max($valoresFrecuencia), $valoresFrecuencia);
 }
 
 

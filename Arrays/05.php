@@ -2,7 +2,7 @@
 
 function rellenoArrayConValores () {
     $arrayBonoloto = [];
-    for ($i = 0; $i <= 6; $i ++) {
+    for ($i = 0; $i < 6; $i ++) {
         $random =rand(1,49);
         $arrayBonoloto[$i]=$random;
     }
@@ -14,7 +14,5 @@ function quitarValoresRepetidos ($arrayBonoloto): array
     return array_unique($arrayBonoloto);
 }
 
-$tabla=quitarValoresRepetidos(rellenoArrayConValores());
-asort($tabla);
-print_r($tabla);
+
 
