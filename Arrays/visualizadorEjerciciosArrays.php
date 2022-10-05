@@ -162,5 +162,30 @@ uasort($paises,'ordenaPaisPorPoblacion');?>
 <?php
 echo mostrarDatos($paises,$ciudades);
 ?>
+<br>
+<hr>
+<br>
+<h1>Ejercicio 08</h1>
+<br>
+<p>Generamos tabla: </p>
+<table class="tablaPaises">
+    <tr>
+        <th>País</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th>Ciudades</th>
+    </tr>
+    <?php foreach ($paises as $clave => $valor) : ?>
+    <tr>
+        <td><?= $clave?></td>
+        <td><?= $valor['Capital'] ?></td>
+        <td><?= $valor['Poblacion']?></td>
+        <td><?php foreach ($ciudades[$clave] as $ciudad) :?>
+                <?= $ciudad . ", " ?>
+            <?php endforeach; ?>
+        </td>
+        <?php endforeach; ?>
+    </tr>
+</table>
 </body>
 </html>
