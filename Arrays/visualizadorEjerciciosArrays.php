@@ -103,8 +103,55 @@ $arrayBonoloto=quitarValoresRepetidos($arrayBonoloto);
     ?>
 </tr>
 </table>
+<br>
+<hr>
+<br>
+<h1>Ejercicio 6</h1>
+<br>
+<?php
+include '06.php';
+// Forma antigua de definir Array en PHP
+$paises = array(
+    'Francia' => array("Capital" => "París", "Poblacion" => "50000000"),
+    'España' => array("Capital" => "Madrid", "Poblacion" => "42000000"),
+    'Italia' => array("Capital" => "Roma", "Poblacion" => "46000000"),
+    'Argentina' => array("Capital" => "Buenos Aires", "Poblacion" => "40000000"),
+    'Colombia' => array("Capital" => "Bogotá", "Poblacion" => "36000000"),
+    'Chile' => array("Capital" => "Santiago", "Poblacion" => "36000000"),
+    'Suecia' => array("Capital" => "Estocolmo", "Poblacion" => "25000000"),
+);
 
+// Forma moderna, mas compacta
+$ciudades = [
+    'Francia' => ["París","Burdeos","Niza","Lille","Nantes"],
+    'España' => ["Madrid", "Barcelona","León","Sevilla", "Valencia", "Málaga"],
+    'Italia' => ["Roma", "Venecia","Florencia","Pisa", "Génova", "Milán", "Turín", "Nápoles"],
+    'Argentina' => ["Buenos Aires", "Córdoba","Parana","Rosario"],
+    'Colombia' => ["Bogotá", "Medellín","Cali","Barranquilla", "Bucaramanga"],
+    'Chile' => ["Santiago", "Arica","Iquique","Osorno", "Viña del Mar"],
+    'Suecia' => ["Estocolmo", "Upsala","Gotemburgo","Lund"],
+];
 
+paisConMasPoblacion($paises);
+?>
+<br>
+<h2>Versión 2</h2>
+<p>Ordenamos array de paises</p>
+<br>
+<?php
+echo "El pais con mayor población es ".paisConMasPoblacion($paises);
+echo " con ",obtenerNumeroHabitantes($paises)." habitantes.";
+//ordenamos con la funcion uasort accediendo al método que compara las poblaciones de dos arrays
+uasort($paises,'ordenaPaisPorPoblacion');?>
+<br><br>
+<p>Obtenemos ciudades: </p>
 
+<table class="tablacCiudades">
+    <tr>
+        <?php
+        echo obtenerCiudades($ciudades,$paises);
+        ?>
+    </tr>
+</table>
 </body>
 </html>
