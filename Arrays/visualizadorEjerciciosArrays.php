@@ -109,7 +109,7 @@ $arrayBonoloto=quitarValoresRepetidos($arrayBonoloto);
 <h1>Ejercicio 6</h1>
 <br>
 <?php
-include '06.php';
+include '06-07.php';
 // Forma antigua de definir Array en PHP
 $paises = array(
     'Francia' => array("Capital" => "París", "Poblacion" => "50000000"),
@@ -153,5 +153,14 @@ uasort($paises,'ordenaPaisPorPoblacion');?>
         ?>
     </tr>
 </table>
+
+<br>
+<hr>
+<br><br>
+<h1>Ejercicio 7</h1>
+<p>Elegimos dos países random y mostramos los datos</p>
+<?php
+echo mostrarDatos($paises,$ciudades);
+?>
 </body>
 </html>

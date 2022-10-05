@@ -38,10 +38,10 @@ function paisConMasPoblacion ($paises): string
     return $pais_max;
 }
 
-function obtenerNumeroHabitantes ($paises)
+function obtenerNumeroHabitantes ($paises): string
 {
     $max=0;
-    foreach ($paises as $clavePais => $valorPais) {
+    foreach ($paises as $valorPais) {
         if ($valorPais['Poblacion']>$max) {
             $max=$valorPais['Poblacion']; //habitantes (valor)
         }
@@ -59,4 +59,25 @@ function obtenerCiudades ($ciudades,$paises) { //enseñando desde el maximo (ult
     foreach($arrayCiudades as $ciudad){
         echo "<td> $ciudad </td>";
     }
+}
+
+function paisRandom ($paises) { //2 paises aleatorios
+    return array_rand($paises,2);
+}
+
+function mostrarDatos ($paises,$ciudades) {
+    foreach (paisRandom($paises) as $pais){
+        echo " País : ".$pais." , con ".number_format($paises[$pais]['Poblacion'], 0, ',', '.'). " habitantes <br/>";
+        echo "<br>";
+        echo "Lista de Ciudades: ";
+        foreach($ciudades[$pais] as $ciudad){
+            echo $ciudad.", ";
+        }
+        echo '<br/>Enlace a google maps: ';
+        echo '<a href="https://www.google.es/maps/place/'.$pais.">Maps</a><br>";
+    }
+
+
+}
+?>
 }
