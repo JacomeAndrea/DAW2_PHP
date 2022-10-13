@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04</title>
+</head>
+<body>
+  <h1>Formulario con múltiples campos</h1>
+
+  <form action="04.php" method="POST">
+    <p>CAMPOS DE TEXTO:</p>
+    <label>Nombre: <input type="text" name="name"/></label>
+    <label>Contraseña: <input type="password" name="password"/></label>
+  <hr>
+      <p>RADIO:</p>
+      <label>Rojo <input type="radio" name="color" value="rojo"/></label><br>
+      <label>Naranja <input type="radio" name="color" value="naranja"/></label><br>
+      <label>Verde <input type="radio" name="color" value="verde"/></label><br>
+  <hr>
+      <p>CHECKBOX</p>
+      <label>Quiero recibir publicidad <input type="checkbox" name="publicidad"></label><br>
+      <p>MULTICHECKBOX</p>
+      <div class="multicheckbox">
+          <label>Inglés <input type="checkbox" value="ingles" name="idioma[]"></label>
+          <label>Francés <input type="checkbox" value="frances" name="idioma[]"></label>
+          <label>Alemán <input type="checkbox" value="aleman" name="idioma[]"></label>
+      </div>
+      <br>
+      <hr>
+      <p>SELECT</p>
+      <div class="simple">
+          <p>Simple</p>
+          <label>Año de finalización de estudios:
+              <select name="estudios">
+                  <option value="2015">2015</option>
+                  <option value="2016" selected="selected">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+              </select>
+          </label>
+      </div>
+      <div class="multiple">
+          <p>Múltiple</p>
+          <label>Ciudades:
+              <select name="arrayCiudades[]" multiple="multiple">
+                  <option value="33">Asturias</option>
+                  <option value="17">Gerona</option>
+                  <option value="28" selected="selected">Madrid</option>
+                  <option value="41">Sevilla</option>
+                  <option value="50" selected="selected">Zaragoza</option>
+              </select>
+          </label> <br />
+      </div>
+      <br />
+      <hr />
+      <b>TEXTAREA:</b>
+      <br>
+      <label>Escriba sus comentarios: </label>
+      <label>
+          <textarea name="textarea" rows="5" cols="30" placeholder="Introduzca su comentario..."></textarea>
+      </label>
+      <hr />
+      <p>BOTONES:</p>
+      <br>
+      <input type="reset"   value="Resetear el formulario" />
+      <input type="submit" value="Enviar formulario al servidor" />
+
+  </form>
+</body>
+</html>

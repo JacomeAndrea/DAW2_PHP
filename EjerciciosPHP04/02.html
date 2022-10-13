@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02</title>
+</head>
+<body>
+  <h1>Mini Calculadora</h1>
+<form action="02.php" method="post">
+
+  <br>
+  Nº1: <input type="text" name="n1">
+  <br><br>
+  Nº2: <input type="text" name="n2">
+  <br><br>
+
+  <input type="submit" name="operacion" value="+" />
+  <input type="submit" name="operacion" value="-" />
+  <input type="submit" name="operacion" value="*" />
+  <input type="submit" name="operacion" value="/" />
+  <input type="submit" name='borrar' value="borrar" onclick='borrar' >Borrar</input> <!--llama a la function borrarvalores()-->
+
+
+  <br><br>
+
+  <input type="radio" id="decimal" name="formato" value="decimal">
+  <label for="decimal">Decimal</label>
+  <input type="radio" id="binario" name="formato" value="binario">
+  <label for="binario">Binario</label>
+  <input type="radio" id="hexadecimal" name="formato" value="hexadecimal">
+  <label for="hexadecimal">Hexadecimal</label>
+
+</form>
+
+</body>
+</html>
