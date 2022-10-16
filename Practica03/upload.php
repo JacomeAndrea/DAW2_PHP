@@ -30,34 +30,49 @@
         } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $directorio= 'imgusers/';
             $arrayImagen =$_POST['archivos[]'];
-            $maxSize=209715.2; //200Kb
-            $totalSizeImagenes=0;
+            $maxSize=209715.2; //200Kb por imagen
+            $totalSizeImagenes=314572.8; //300Kb por subida
             $subir_archivo = $directorio.basename($_FILES['subir_archivo']['name']);
+            $count_size=0;
+            $uploadOk=1;
 
                 if (count($arrayImagen)>0) {
                 foreach ( $arrayImagen as $valorImagen ){
                     if (getimagesize($valorImagen)<$maxSize) {
-                        echo "$valorImagen";
+                        $count_size+=getimagesize($valorImagen); //almacenamos en count el tamaño de cada img
                     } else {
-                        echo "Debe elegir una imagen menor de 200Kb";
-                        break;
-
-                        /*Falta: Si el nombre se repite??*/
+                        $uploadOk = 0;
+                        return "Debe elegir una imagen menor de 200Kb";
                     }
-                    $totalSizeImagenes=$totalSizeImagenes+getimagesize($valorImagen);
+                    if ($count_size>$totalSizeImagenes) { //si supera los 300Kb
+                        $uploadOk = 0;
+                        return "El total de archivos subidos no puede superar los 300Kb";
+                    }
+                    if (file_exists($subir_archivo)) { //si el archivo existe (nombre repe)
+                        echo "El archivo ya existe";
+                        $uploadOk = 0;//si existe lanza un valor en 0
+                    }
                 }
-                if ($totalSizeImagenes<314572.8) { //300Kb
-                    var_dump($_POST);
-                } else {
-                    echo "Los archivos de subida no pueden superar los 300Kb.";
-                }
-            }
+                    if ($count_size>$totalSizeImagenes) { //si supera los 300Kb
+                        $uploadOk = 0;
+                        echo "El total de archivos subidos no puede superar los 300Kb";
+                    }
 
-            if (move_uploaded_file($_FILES['subir_archivo']['tmp_name'], $subir_archivo)) {
-                echo "El archivo es válido y se cargó correctamente.<br><br>";
-                echo"<a href='".$subir_archivo."' target='_blank'><img src='".$subir_archivo."' alt='imagen' width='150'></a>";
-            } else {
-                echo "La subida ha fallado";
+                    foreach ( $arrayImagen as $claveImagen => $valorImagen ) {
+                        if ($uploadOk == 0) {
+                            echo "Perdon, pero el archivo no se subio";
+                        } else { //si no hay error, se sube archivos
+                            if (move_uploaded_file($_FILES[$claveImagen][$valorImagen], $subir_archivo)) {
+                                echo "El archivo ". basename($_FILES[$claveImagen][$valorImagen]). " Se subio correctamente";
+                                echo "<li style='display: flex'><img src='$valorImagen' width='250' height='250' alt=".'$subir_archivo'."></li>"; //mostramos imagen
+
+                            } else {
+                                echo "Error al cargar el archivo";
+                            }
+                        }
+                    }
+
+
             }
         } else {
             echo "Error, el method debe ser GET o POST. Algo ha salido mal...";
@@ -65,7 +80,7 @@
         ?>
         </script>
         <br>
-        <h3><a href="cargar.html">Volver </a></h3>
+        <h3><a href="cargar.html">Volver a cliente</a></h3>
 
     </main>
 </body>
