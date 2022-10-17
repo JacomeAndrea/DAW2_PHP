@@ -8,13 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-  <form  method="post"  action="upload.php">
+/*Se han comentado los requerimientos de subida ya que son tratados en el servidor*/
+  <form  method="post"  action="servidor.php" enctype="multipart/form-data">
     <fieldset>
       <legend>Subir múltiples imágenes</legend>
       <label>Elija las imagenes que quieres subir:</label>
       <!--  200Kbytes -->
-      <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
-      <input name="archivos[]" type="file" accept="image/png, image/jpg" multiple> <br />
+      <input type="hidden" name="MAX_FILE_SIZE"  /><!--value="200000" para que no puedas subir más de 200Kb por archivo-->
+      <input name="archivos[]" type="file" > <br /> <!-- accept="image/png, image/jpg" para permitir únicamente archivos JPG o PNG--> <!--multiple para permitir subidas de archivos múltipless-->
       <input type="submit" value=" Subir archivos " />
       <input type="reset"  value=" Borrar selección ">
     </fieldset>
