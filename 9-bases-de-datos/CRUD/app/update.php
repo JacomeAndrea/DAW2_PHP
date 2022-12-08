@@ -11,15 +11,32 @@
 <h1>ACTUALIZAR</h1>
 <?php
 include "../app/conexion.php";
+//para que no vuelva a leer los datos: si no has pulsado el botón de actualizar
+if (!isset($_POST["bot_actualizar"])) {
+    //almacenamos lo que nos llega por la URL
+    $id=$_GET['Id'];
+    $nombre=$_GET['nom'];
+    $apellido=$_GET['ape'];
+    $email=$_GET['em'];
+    $genero=$_GET['gen'];
+    $ip=$_GET['ip'];
+    $telefono=$_GET['tel'];
+} else { //almacenamos los datos del formulario por POST
+    $id=$_POST['Id'];
+    $nombre=$_POST['nom'];
+    $apellido=$_POST['ape'];
+    $email=$_POST['em'];
+    $genero=$_POST['gen'];
+    $ip=$_POST['ip'];
+    $telefono=$_POST['tel'];
 
-//almacenamos lo que nos llega por la URL
-$id=$_GET['Id'];
-$nombre=$_GET['nom'];
-$apellido=$_GET['ape'];
-$email=$_GET['em'];
-$genero=$_GET['gen'];
-$ip=$_GET['ip'];
-$telefono=$_GET['tel'];
+    //actualizamos los datos
+    $consulta="UPDATE Clientes SET first_name='$nombre', last_name='$apellido', email='$email', gender='$genero', ip_address='$ip', telefono='$telefono' WHERE id='$id'";
+    global $conexion;
+    $arrayResultado=mysqli_query($conexion,$consulta);
+
+    header("location:../index.php");
+}
 
 ?>
 <p>

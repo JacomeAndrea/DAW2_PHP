@@ -18,13 +18,25 @@ $consulta="SELECT * FROM Clientes";
 global $conexion;
 $arrayResultado=mysqli_query($conexion,$consulta);
 
-//volcamos en la tabla la consulta
+//Para la inserción de datos
+if (isset($_POST['cr'])) {
+    $nombre=$_POST['Nom'];
+    $apellido=$_POST['Ape'];
+    $email=$_POST['Em'];
+    $genero=$_POST['Gen'];
+    $ip=$_POST['Ip'];
+    $telefono=$_POST['Tel'];
 
+    $consulta="INSERT INTO Clientes (first_name, last_name, email, gender, ip_address, telefono) VALUES ('$nombre','$apellido','$email','$genero','$ip','$telefono')";
+    global $conexion;
+    mysqli_query($conexion,$consulta);
+    header("Location: index.php");
+}
 
 ?>
 
 <h1>CRUD<span class="subtitulo">Create Read Update Delete</span></h1>
-
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 <table width="50%" border="0" align="center">
     <tr >
         <td class="primera_fila">Id</td>
@@ -61,8 +73,7 @@ $arrayResultado=mysqli_query($conexion,$consulta);
 
 
     <tr>
-        <td></td>
-        <td><input type='number' name='Id' size='10' class='centrado'></td>
+        <td><?php echo $fila['id']?></td> <!--id-->
         <td><input type='text' name='Nom' size='10' class='centrado'></td>
         <td><input type='text' name='Ape' size='10' class='centrado'></td>
         <td><input type='email' name=' Em' size='10' class='centrado'></td>
@@ -72,6 +83,7 @@ $arrayResultado=mysqli_query($conexion,$consulta);
 
         <td class='bot'><input type='submit' name='cr' id='cr' value='Insertar'></td></tr>
 </table>
+</form>
 
 <p>&nbsp;</p>
 </body>
