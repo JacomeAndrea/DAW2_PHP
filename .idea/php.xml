@@ -3,6 +3,14 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="/usr/share/php" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/composer" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/EjeMockaroo-CRUD/vendor/php-http/message-factory" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
