@@ -216,33 +216,46 @@ class AccesoDatos {
 // FUNCIONES QUE COMPRUEBAN LA VALIDEZ DE LOS DATOS
 
 
-    //comprobar si existe el email en la base de datos
+    //comprobar si a parte del email de este cliente, el email se repite en la base de datos
     public function emailRepetido($correo):bool{
-        $consulta=$this->dbh->query("SELECT * FROM Clientes WHERE email= '$correo'");
-        if ($consulta->num_rows == 0) {
+        $stmt_email   = $this->dbh->prepare("select * from Clientes where email =?");
+        if (!$stmt_email) die ($this->dbh->error);
+
+        // Enlazo $login con el primer email
+        $stmt_email->bind_param("s",$correo);
+        $stmt_email->execute();
+        $result = $stmt_email->get_result();
+        if ( $result ){
+            $cli = $result->fetch_object('Cliente');
+            }
+
+        if (!$cli){
+            return false;
+        }else{
+            //si el email es igual al email de este cliente, no se repite
+            if ($cli->email == $correo){
+                return false;
+            }
             return true;
         }
-        return false;
     }
+
+
+
 
     //Valida la dirección IPv4 excluyendo las IP privadas
     public function validarIp($ip):bool{
-        if(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE)) {
-            return true;
-        }else {
-            return false;
-        }
+        return filter_var($ip, FILTER_VALIDATE_IP);
     }
 
     //Comprueba si el teléfono tiene formato 999-999-9999
     function validarTelefono($telefono): bool
     {
-        if (strlen($telefono) == 9){
-            return true;
-        } else {
-            return false;
-        }
+        $formato = "/^\d{3}-\d{3}-\d{4}$/";
+        return preg_match($formato, $telefono);
     }
+
+
 }
 
 

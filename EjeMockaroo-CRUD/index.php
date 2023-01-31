@@ -43,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ){
 
      // Proceso las ordenes de navegación en detalles
     if ( isset($_GET['nav-detalles']) && isset($_GET['id']) ) {
-     switch ( $_GET['nav-detalles']) {
-        case "Siguiente": crudDetallesSiguiente($_GET['id']); break;
-        case "Anterior" : crudDetallesAnterior($_GET['id']); break;
-        case "Descargar": crudDescargar($_GET['id']); break;
-    }
+         switch ( $_GET['nav-detalles']) {
+            case "Siguiente": crudDetallesSiguiente($_GET['id']); break;
+            case "Anterior" : crudDetallesAnterior($_GET['id']); break;
+            case "Descargar": crudDescargar($_GET['id']); break;
+        }
      }
 
     // Proceso de ordenes de CRUD clientes
@@ -57,11 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ){
             case "Borrar"   : crudBorrar   ($_GET['id']); break;
             case "Modificar": crudModificar($_GET['id']); break;
             case "Detalles" : crudDetalles ($_GET['id']);break;
-            case "Subir foto" : crudSubirFoto ($_GET['id']); break;
-            case "Modificar foto" : crudModificarFoto ($_GET['id']); break;
             case "Terminar" : crudTerminar(); break;
         }
     }
+
+
 } 
 // POST Formulario de alta o de modificación
 else {
@@ -72,6 +72,7 @@ else {
              case "Detalles":; // No hago nada
              case "Siguiente": crudModificarSiguiente($_POST['id']); break;
              case "Anterior": crudModificarAnterior($_POST['id']); break;
+             case "Subir imagen": crudSubirFoto($_POST['id']); break;
          }
     }
 }

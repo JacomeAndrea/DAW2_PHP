@@ -1,14 +1,22 @@
 
 <hr>
-<form   method="POST">
+
+<?php
+if ($_GET['orden']=="Modificar"){
+    $foto= $cli->getFoto();
+    echo "<img style='width: 200px' src='$foto' alt='imagen de perfil'>";
+}
+?>
+
+<form   method="POST" enctype="multipart/form-data">
 <table>
  <tr><td>id:</td> 
- <td><input type="number" name="id" value="<?=$cli->id ?>"  readonly  ></td></tr>
+ <td><input type="number" name="id" value="<?=$cli->id ?>"  readonly  ></td>
  </tr>
- <tr><td>first_name:</td> 
+ <tr><td>first_name:</td>
  <td><input type="text" name="first_name" value="<?=$cli->first_name ?>" autofocus  ></td></tr>
  </tr>
- <tr><td>last_name:</td> 
+ <tr><td>last_name:</td>
  <td><input type="text" name="last_name" value="<?=$cli->last_name ?>"  ></td></tr>
  </tr>
  <tr><td>email:</td> 
@@ -24,18 +32,25 @@
  <td><input type="tel" name="telefono" value="<?=$cli->telefono ?>"  ></td></tr>
  </tr>
  </table>
-    <div class="foto">
-        <img src="<?=$foto?>" alt="imagen <?=$foto?>">
-    </div>
+
+
  <input type="submit"	 name="orden" 	value="<?=$orden?>">
  <input type="submit"	 name="orden" 	value="Volver">
-<input type="submit"	 name="orden" 	value="Subir foto">
-<input type="submit"	 name="orden" 	value="Modificar foto">
 
 
     <br><br>
     <!--botón -->
     <input type="submit" name="orden" value="Anterior">
     <input type="submit" name="orden" value="Siguiente">
+    <br><br>
+        <input name='archivo' id='archivo' type='file'/>
+        <input type='submit' name='orden' value='Subir imagen'/>
+
 </form>
+
+<br><br>
+
+
+
+
 

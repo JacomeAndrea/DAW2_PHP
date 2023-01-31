@@ -6,11 +6,13 @@
  <td><input type="number" name="id" value="<?=$cli->id ?>"  readonly > </td>
  <td rowspan="7">
      <?php
-///llamamos a la funcion countryCode
-        $country = strtolower(countryCode($cli->ip_address));
+//llamamos a la funcion countryCode
+        $country = strtolower($cli->countryCode($cli->ip_address));
+
      ?>
-     <img src="https://flagcdn.com/256x192/<?php echo $country?>.png" alt="<?php echo $country?>" width="256" height="192">
-</tr>
+     <img src="https://flagcdn.com/256x192/<?= $country?>.png" alt="<?php echo $country?>" width="256" height="192">
+     <img style='width: 200px' src='<?= $cli->getFoto() ?>' alt='imagen de perfil'>
+ </tr>
  <tr><td>first_name:</td> 
  <td><input type="text" name="first_name" value="<?=$cli->first_name ?>" readonly > </td></tr>
  </tr>
@@ -30,12 +32,16 @@
  <td><input type="tel" name="telefono" value="<?=$cli->telefono ?>" readonly ></td></tr>
  </tr>
  </table>
- 
+
+<br><br>
+
+ <br><br>
 <form>
 <input type="hidden"  name="id" value="<?=$cli->id ?>">
 <button type="submit" name="nav-detalles" value="Anterior"> Anterior << </button>
 <button type="submit" name="nav-detalles" value="Siguiente"> Siguiente >> </button>
 <button type="submit" name="nav-detalles" value="Descargar"> Descargar </button>
-</form> 
+</form>
+
 
 

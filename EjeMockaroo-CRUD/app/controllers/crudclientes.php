@@ -191,18 +191,33 @@ function crudPostModificar(){
         include "app/views/pdf.php";
     }
 
-    //FUNCIONES IMÁGENES
-    function crudSubirFoto ($id) {
+    //funcion que permita al cliente subir una foto a uploads
+   function crudSubirFoto($id)
+    {
         $db = AccesoDatos::getModelo();
         $cli = $db->getCliente($id);
-        if (!fotoExiste($id)) { //hacer función
-            //subimos foto
-        }
+        $archivo = $_FILES['archivo']['name'];
+         if (isset($archivo) && $archivo != "") {
+                $tipo = $_FILES['archivo']['type'];
+                $tamano = $_FILES['archivo']['size'];
+                $temp = $_FILES['archivo']['tmp_name'];
+                if (strpos($tipo, "jpg") || (strpos($tipo, "JPG")) && $tamano < 125000) {
+                    //se cambia el nombre del archivo
+                    $archivo = sprintf("%'.08d", $id);
+                    $archivo .= '.jpg';
+                    //comprobar si existe ya un archivo en el directorio llamado así
+                    if (file_exists('app/uploads/'.$archivo)) {
+                        //se borra
+                        unlink("app/uploads/".$archivo);
+                    }
+                    //Se intenta subir al servidor
+                    if (move_uploaded_file($temp, 'app/uploads/' . $archivo)) {
+                        $cli->foto = $archivo;
+                        $db->modCliente($cli);
+                    }
+               }
+         }
+
     }
 
-    function countryCode ($ip) {
-    $solicitud=file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip);
-    $datosSolicitud=json_decode($solicitud);
-    return $datosSolicitud->geoplugin_countryCode;
-}
 
