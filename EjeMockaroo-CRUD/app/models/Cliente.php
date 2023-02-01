@@ -8,6 +8,7 @@ class Cliente {
     private $gender;
     private $ip_address;
     private $telefono;
+    private $foto;
     
 
     

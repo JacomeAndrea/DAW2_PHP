@@ -201,7 +201,7 @@ function crudPostModificar(){
                 $tipo = $_FILES['archivo']['type'];
                 $tamano = $_FILES['archivo']['size'];
                 $temp = $_FILES['archivo']['tmp_name'];
-                if (strpos($tipo, "jpg") || (strpos($tipo, "JPG")) && $tamano < 125000) {
+               if (strpos($tipo, "jpg") || (strpos($tipo, "JPG")) && $tamano < 125000) {
                     //se cambia el nombre del archivo
                     $archivo = sprintf("%'.08d", $id);
                     $archivo .= '.jpg';
@@ -215,9 +215,35 @@ function crudPostModificar(){
                         $cli->foto = $archivo;
                         $db->modCliente($cli);
                     }
-               }
+                }
          }
 
+    }
+
+    function  logIn ($user, $password) {
+    //comprobamos que el usuario y la contraseña son correctos
+        $encryptPass = md5($password,false);
+        $db = AccesoDatos::getModelo();
+        if ($db->checkLogIn($user,$encryptPass)){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    function obtenerUserName($user){
+        $db = AccesoDatos::getModelo();
+        $user = $db->getUser($user);
+        $userName = $user->user;
+        return $userName;
+    }
+
+    //Obtener el rol
+    function obtenerRol($user){
+        $db = AccesoDatos::getModelo();
+        $user = $db->getUser($user);
+        $rol = $user->rol;
+        return $rol;
     }
 
 
